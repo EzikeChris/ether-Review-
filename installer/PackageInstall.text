@@ -1,0 +1,10 @@
+PACKAGES TO install
+
+SOLIDITY COMPILER
+ETHEREUM TESTNET CLIENT
+
+
+
+sudo npm install -g solc
+sudo npm install -g ethereumjs-testrpc
+Testrpc npm to check if it works

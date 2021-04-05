@@ -1,0 +1,49 @@
+install local testnet using npm
+
+npm install -g ethereumjs-testrpc 
+
+
+cat your smart contract displays your smart contract----
+
+
+
+install web3 ethereum network client----
+npm install web3
+
+
+install solcjs
+npm install solc 
+
+start node session by typing node---
+node 
+
+
+import your packages 
+
+var Web3 = require('web3');
+var solc = require('solc');
+
+var web3 = new Web3(new web.provider.HttpProvider('http://localhost:8545'));
+provider is a way just one way to connect to the ethereum network 
+
+Compile SmartContracts with solcjs
+var compliledContract = solc.compile(fs.readFileSync('./HelloWorld.sol').toString())
+we use the fs.readfile into memory
+
+var abi = compliledContract.contracts[':HelloWorld'].interface;
+
+get the byte codes a string that contains/represents all the instructions that can be understood by the evn(ethereum virtual machine)
+
+var bytecode = compiledContract.contracts[':HelloWorld'].bytecode;
+
+create contract object with web3
+
+var HelloWorld = new web3.eth.contract(JSON.parse(abi));
+
+var HelloWorldTx = HelloWorld.deploy({data: byecode, arguments: [web3.utils.aciiToHex('Hello')]});
+
+HelloWorldTx.send({from: '0x97dddijvnduiui49489e89nie', gas:100000})
+then(console.log);
+
+Check Gas needed for transactions
+web3.eth.estimateGas(HelloWorldTx).then(console.log);
